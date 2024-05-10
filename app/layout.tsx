@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { Layout, LayoutBody, LayoutHeader } from "@/components/custom/layout";
+import { Search } from "@/components/search";
+import { UserNav } from "@/components/user-nav";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggle } from "@/components/theme-switch";
+import AppShell from "@/components/app-shell";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +25,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <AppShell>
+            <Layout fadedBelow fixedHeight>
+              <LayoutHeader>
+                <div className="flex w-full items-center justify-between">
+                  <Search />
+                  <div className="flex items-center space-x-4">
+                    <ThemeToggle />
+                    <UserNav />
+                  </div>
+                </div>
+              </LayoutHeader>
+              <LayoutBody>{children}</LayoutBody>
+            </Layout>
+          </AppShell>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
