@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { Layout, LayoutBody, LayoutHeader } from "@/components/custom/layout";
-import { Search } from "@/components/search";
-import { UserNav } from "@/components/user-nav";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ThemeToggle } from "@/components/theme-switch";
 import AppShell from "@/components/app-shell";
+import { Layout, LayoutBody, LayoutHeader } from "@/components/custom/layout";
+import { ThemeToggle } from "@/components/theme-switch";
+import { UserNav } from "@/components/user-nav";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -29,12 +28,12 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AppShell>
-            <Layout fixedHeight>
+            <Layout>
               <LayoutHeader>
                 <div className="flex w-full items-center justify-end">
                   <div className="flex items-center space-x-4">

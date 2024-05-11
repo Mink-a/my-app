@@ -13,9 +13,10 @@ async function getData({
   limit: number;
   page: number;
 }) {
-  return await api.get<User[]>(
-    `http://localhost:3333/users?page=${page}&limit=${limit}&search_query=${query}`
+  const users = await api.get<User[]>(
+    `http://localhost:3333/api/users?page=${page}&limit=${limit}&search_query=${query}`,
   );
+  return users;
 }
 
 export default async function UsersIndexPage({
@@ -30,7 +31,7 @@ export default async function UsersIndexPage({
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
   const limit = Number(searchParams?.limit) || 10;
-  // should fetch with query like getData({query})
+
   const data = await getData({ query: query, limit: limit, page: currentPage });
 
   return (

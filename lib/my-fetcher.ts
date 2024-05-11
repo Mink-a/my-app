@@ -1,3 +1,5 @@
+import { ServerError, UnauthorizedError } from "./exceptions";
+
 async function request<TResponse>(
   url: string,
   config: RequestInit = {},
@@ -6,21 +8,16 @@ async function request<TResponse>(
     const response = await fetch(url, config);
 
     if (!response.ok) {
-      throw response;
-    }
-
-    const data = await response.json();
-    return data as TResponse;
-  } catch (error) {
-    if (error instanceof Response) {
-      if (error.status === 401) {
-        console.log("unauthorized", error);
+      if (response.status === 401) {
+        throw new UnauthorizedError();
+      } else {
+        throw new ServerError();
       }
-
-      throw error;
     }
 
-    throw new Error("Failed to fetch data", { cause: error });
+    return (await response.json()) as TResponse;
+  } catch (error) {
+    throw new ServerError("Failed to fetch data!");
   }
 }
 
