@@ -34,10 +34,9 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <AppShell>
-            <Layout fadedBelow fixedHeight>
+            <Layout fixedHeight>
               <LayoutHeader>
-                <div className="flex w-full items-center justify-between">
-                  <Search />
+                <div className="flex w-full items-center justify-end">
                   <div className="flex items-center space-x-4">
                     <ThemeToggle />
                     <UserNav />
