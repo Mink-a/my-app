@@ -1,15 +1,8 @@
 import { DataTable } from "@/components/custom/data-table";
-import { User, columns } from "./columns";
+import { columns } from "./columns";
 import Pagination from "@/components/custom/pagination";
 import Search from "@/components/custom/search";
-import { api } from "@/lib/my-fetcher";
 import fetchServer from "@/lib/fetch-server";
-import { fetchClient } from "@/lib/fetch-client";
-import { getSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { cookies, headers } from "next/headers";
-import { request } from "http";
 
 async function getData({
   query,
@@ -20,15 +13,9 @@ async function getData({
   limit: number;
   page: number;
 }) {
-  const session = await getServerSession(authOptions);
-  const users = await fetchClient(
-    `http://localhost:3333/api/users?page=${page}&limit=${limit}&search_query=${query}`,
-    {
-      headers: {
-        Authorization: `Bearer ${session?.jwt}`,
-      },
-    },
-  );
+  const users = await fetchServer({
+    url: `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/users?page=${page}&limit=${limit}&search_query=${query}`,
+  });
   return users.json();
 }
 

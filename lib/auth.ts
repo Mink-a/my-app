@@ -1,4 +1,4 @@
-import { fetchClient } from "@/lib/fetch-client";
+import fetchClient from "@/lib/fetch-client";
 import { jwt } from "@/lib/utils";
 import { randomBytes, randomUUID } from "crypto";
 import type { NextAuthOptions, User } from "next-auth";
@@ -20,17 +20,11 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         try {
-          const response = await fetchClient(
-            process.env.NEXT_PUBLIC_BACKEND_API_URL + "/api/auth/login",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: JSON.stringify(credentials),
-            },
-          );
+          const response = await fetchClient({
+            method: "POST",
+            url: process.env.NEXT_PUBLIC_BACKEND_API_URL + "/api/auth/login",
+            body: JSON.stringify(credentials),
+          });
 
           if (!response.ok) {
             throw response;

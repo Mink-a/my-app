@@ -2,6 +2,8 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import "server-only";
+import { ServerError, UnauthorizedError } from "./exceptions";
+import { signOut } from "next-auth/react";
 
 interface fetchServerProps {
   method?: string;
@@ -16,13 +18,14 @@ async function fetchServer({
 }: fetchServerProps) {
   try {
     const session = await getServerSession(authOptions);
+    const accessToken = session?.jwt;
 
     const response = await fetch(url.toString(), {
       method: method,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer " + session?.jwt,
+        Authorization: `Bearer ${accessToken}`,
       },
       body: body || undefined,
     });
@@ -35,11 +38,14 @@ async function fetchServer({
   } catch (error) {
     if (error instanceof Response) {
       if (error.status === 401) {
-        return redirect("/login");
+        signOut();
+        throw new UnauthorizedError();
+      } else {
+        throw new ServerError("Failed to fetch data");
       }
     }
-
-    throw new Error("Failed to fetch data from the server", { cause: error });
+    console.log("hei");
+    throw new ServerError("Failed to fetch data");
   }
 }
 
