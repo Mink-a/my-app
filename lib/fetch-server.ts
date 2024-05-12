@@ -1,9 +1,8 @@
-import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
-import "server-only";
-import { ServerError, UnauthorizedError } from "./exceptions";
-import { signOut } from "next-auth/react";
+import 'server-only';
+import { authOptions } from '@/lib/auth';
+import { getServerSession } from 'next-auth';
+import { ServerError, UnauthorizedError } from './exceptions';
+import { signOut } from 'next-auth/react';
 
 interface fetchServerProps {
   method?: string;
@@ -12,9 +11,9 @@ interface fetchServerProps {
 }
 
 async function fetchServer({
-  method = "GET",
+  method = 'GET',
   url,
-  body = "",
+  body = '',
 }: fetchServerProps) {
   try {
     const session = await getServerSession(authOptions);
@@ -23,8 +22,8 @@ async function fetchServer({
     const response = await fetch(url.toString(), {
       method: method,
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
       body: body || undefined,
@@ -41,11 +40,11 @@ async function fetchServer({
         signOut();
         throw new UnauthorizedError();
       } else {
-        throw new ServerError("Failed to fetch data");
+        throw new ServerError('Failed to fetch data');
       }
     }
-    console.log("hei");
-    throw new ServerError("Failed to fetch data");
+    console.log('hei');
+    throw new ServerError('Failed to fetch data');
   }
 }
 
