@@ -1,5 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/custom/button";
+'use client';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/custom/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,25 +10,32 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu';
+import { useSession } from 'next-auth/react';
 
 export function UserNav() {
+  const { data } = useSession();
+  console.log({ u: data?.user });
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-8 w-8">
-            <AvatarImage src="https://i.pravatar.cc/10" alt="@shadcn" />
-            <AvatarFallback>SN</AvatarFallback>
+        <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
+          <Avatar className='h-8 w-8'>
+            <AvatarImage src='https://i.pravatar.cc/10' alt='@user-profile' />
+            <AvatarFallback>
+              {data?.user.name?.charAt(0).toUpperCase()}
+            </AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">satnaing</p>
-            <p className="text-xs leading-none text-muted-foreground">
-              satnaingdev@gmail.com
+      <DropdownMenuContent className='w-56' align='end' forceMount>
+        <DropdownMenuLabel className='font-normal'>
+          <div className='flex flex-col space-y-1'>
+            <p className='text-sm font-medium leading-none'>
+              {data?.user.username}
+            </p>
+            <p className='text-xs leading-none text-muted-foreground'>
+              {data?.user.email}
             </p>
           </div>
         </DropdownMenuLabel>
