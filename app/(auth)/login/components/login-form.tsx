@@ -20,6 +20,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -27,6 +29,7 @@ const formSchema = z.object({
 });
 
 export function LoginForm() {
+  const searchParams = useSearchParams();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,9 +39,8 @@ export function LoginForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    const callbackUrl = searchParams.get("callbackUrl") || "/";
+    signIn("credentials", { ...values, callbackUrl });
   }
   return (
     <Card className="w-[350px]">
