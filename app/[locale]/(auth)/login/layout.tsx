@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function LoginLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="grid place-items-center h-svh">{children}</div>;
+  return <div className='grid h-svh place-items-center'>{children}</div>;
 }
 
 export default LoginLayout;

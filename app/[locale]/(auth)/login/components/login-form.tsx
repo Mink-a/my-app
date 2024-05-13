@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -11,17 +11,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { useSearchParams } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -33,35 +33,35 @@ export function LoginForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "Admin",
-      password: "password",
+      username: 'Admin',
+      password: 'password',
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const callbackUrl = searchParams.get("callbackUrl") || "/";
-    signIn("credentials", { ...values, callbackUrl });
+    const callbackUrl = searchParams.get('callbackUrl') || '/';
+    signIn('credentials', { ...values, callbackUrl });
   }
   return (
-    <Card className="w-[350px]">
-      <CardHeader className="text-center">
+    <Card className='w-[350px]'>
+      <CardHeader className='text-center'>
         <CardTitle>Login</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form
-            id="loginForm"
+            id='loginForm'
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8"
+            className='space-y-8'
           >
             <FormField
               control={form.control}
-              name="username"
+              name='username'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="Admin" {...field} />
+                    <Input placeholder='Admin' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -69,12 +69,12 @@ export function LoginForm() {
             />
             <FormField
               control={form.control}
-              name="password"
+              name='password'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="password" {...field} />
+                    <Input type='password' placeholder='password' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -83,8 +83,8 @@ export function LoginForm() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button type="submit" form="loginForm" className="w-full">
+      <CardFooter className='flex justify-between'>
+        <Button type='submit' form='loginForm' className='w-full'>
           Login
         </Button>
       </CardFooter>

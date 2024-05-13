@@ -1,0 +1,18 @@
+{
+  "Index": {
+    "title": "Home"
+  },
+  "Login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Login"
+  },
+  "LocaleSwitcher": {
+    "switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
+  },
+  "UserList": {
+    "title": "Users",
+    "description": "Users List"
+  }
+}
