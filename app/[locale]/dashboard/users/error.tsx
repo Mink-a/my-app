@@ -1,19 +1,19 @@
-'use client'; // Error components must be Client Components
+'use client' // Error components must be Client Components
 
-import { Button } from '@/components/custom/button';
-import { UnauthorizedError } from '@/lib/exceptions';
-import { useEffect } from 'react';
+import { Button } from '@/components/custom/button'
+import { UnauthorizedError } from '@/lib/exceptions'
+import { useEffect } from 'react'
 
 export default function Error({
   error,
   reset,
 }: {
-  error: Error & { digest?: string; statusCode?: number };
-  reset: () => void;
+  error: Error & { digest?: string; statusCode?: number }
+  reset: () => void
 }) {
   useEffect(() => {
-    console.log({ error });
-  }, [error]);
+    console.log({ error })
+  }, [error])
 
   return (
     <div className='grid h-[600px] place-content-center text-center'>
@@ -27,5 +27,5 @@ export default function Error({
         <Button onClick={() => reset()}>Try Again</Button>
       </div>
     </div>
-  );
+  )
 }

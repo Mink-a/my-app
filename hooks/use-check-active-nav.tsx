@@ -1,16 +1,16 @@
-"use client";
-import { usePathname } from "next/navigation";
+'use client'
+import { usePathname } from 'next/navigation'
 
 export default function useCheckActiveNav() {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const checkActiveNav = (nav: string) => {
-    const pathArray = pathname.split("/").filter((item) => item !== "");
+    const pathArray = pathname.split('/').filter((item) => item !== '')
 
-    if (nav === "/" && pathArray.length < 1) return true;
+    if (nav === '/' && pathArray.length < 1) return true
 
-    return pathArray.includes(nav.replace(/^\//, ""));
-  };
+    return pathname === nav
+  }
 
-  return { checkActiveNav };
+  return { checkActiveNav }
 }

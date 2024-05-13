@@ -1,11 +1,11 @@
-import AppShell from '@/components/app-shell';
+import AppShell from '@/components/app-shell'
 
 function DashboardLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  return <AppShell>{children}</AppShell>;
+  return <AppShell>{children}</AppShell>
 }
 
-export default DashboardLayout;
+export default DashboardLayout

@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { ColumnDef } from '@tanstack/react-table';
+import { ColumnDef } from '@tanstack/react-table'
 
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal } from 'lucide-react'
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,17 +12,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/ui/dropdown-menu'
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export interface User {
-  id: string;
-  email: string;
-  username: string;
-  role: string;
-  createdAt: string;
-  updatedAt: string;
+  id: string
+  email: string
+  username: string
+  role: string
+  createdAt: string
+  updatedAt: string
 }
 
 export const columns: ColumnDef<User>[] = [
@@ -42,7 +42,7 @@ export const columns: ColumnDef<User>[] = [
     id: 'actions',
     header: () => <div className='text-right'>Actions</div>,
     cell: ({ row }) => {
-      const payment = row.original;
+      const payment = row.original
 
       return (
         <div className='text-right font-medium'>
@@ -66,7 +66,7 @@ export const columns: ColumnDef<User>[] = [
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-      );
+      )
     },
   },
-];
+]

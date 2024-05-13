@@ -1,6 +1,6 @@
-'use client';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/custom/button';
+'use client'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/custom/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,12 +10,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { useSession } from 'next-auth/react';
+} from '@/components/ui/dropdown-menu'
+import { useSession } from 'next-auth/react'
 
 export function UserNav() {
-  const { data } = useSession();
-  console.log({ u: data?.user });
+  const { data } = useSession()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -62,5 +61,5 @@ export function UserNav() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

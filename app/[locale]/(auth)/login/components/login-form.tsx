@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -11,36 +11,36 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
+} from '@/components/ui/form'
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { useSearchParams } from 'next/navigation';
-import { signIn } from 'next-auth/react';
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { useSearchParams } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
   password: z.string().min(2).max(50),
-});
+})
 
 export function LoginForm() {
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: 'Admin',
       password: 'password',
     },
-  });
+  })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const callbackUrl = searchParams.get('callbackUrl') || '/';
-    signIn('credentials', { ...values, callbackUrl });
+    const callbackUrl = searchParams.get('callbackUrl') || '/'
+    signIn('credentials', { ...values, callbackUrl })
   }
   return (
     <Card className='w-[350px]'>
@@ -89,5 +89,5 @@ export function LoginForm() {
         </Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

@@ -1,5 +1,8 @@
 {
-  "*/**/*.{js,jsx,ts,tsx}": ["npx prettier --write", "eslint --fix", "eslint"],
-  "*.html": ["eslint", "npx prettier --write"],
-  "*/**/*.{json,css,md}": ["npx prettier --write"]
+  "./{app,components,data,hooks,lib}/**/*.{js,jsx,ts,tsx}": [
+    "npx prettier --log-level warn --write",
+    "eslint --fix",
+    "eslint",
+    "git add"
+  ]
 }

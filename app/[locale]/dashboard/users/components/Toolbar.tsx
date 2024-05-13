@@ -1,7 +1,7 @@
-import { buttonVariants } from '@/components/custom/button';
-import { Search } from '@/components/custom/search';
-import Link from 'next/link';
-import React from 'react';
+import { buttonVariants } from '@/components/custom/button'
+import { Search } from '@/components/custom/search'
+import Link from 'next/link'
+import React from 'react'
 
 export function Toolbar() {
   return (
@@ -14,5 +14,5 @@ export function Toolbar() {
         Create
       </Link>
     </div>
-  );
+  )
 }
