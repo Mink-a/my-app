@@ -1,7 +1,8 @@
-import { DataTable } from '@/components/custom/data-table'
-import { columns } from './columns'
-import Pagination from '@/components/custom/pagination'
 import fetchServer from '@/lib/fetch-server'
+import { DataTable } from '@/components/custom/data-table'
+import Pagination from '@/components/custom/pagination'
+
+import { columns } from './columns'
 import { Toolbar } from './components/Toolbar'
 
 async function getData({

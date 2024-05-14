@@ -1,8 +1,11 @@
 import 'server-only'
-import { authOptions } from '@/lib/auth'
+
 import { getServerSession } from 'next-auth'
-import { ServerError, UnauthorizedError } from './exceptions'
 import { signOut } from 'next-auth/react'
+
+import { authOptions } from '@/lib/auth'
+
+import { ServerError, UnauthorizedError } from './exceptions'
 
 interface fetchServerProps {
   method?: string

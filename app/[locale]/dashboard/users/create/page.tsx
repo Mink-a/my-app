@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { UserCreateForm } from '../components/create-form'
 
 function UserCreateIndexPage() {

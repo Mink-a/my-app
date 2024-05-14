@@ -1,8 +1,10 @@
-'use client' // Error components must be Client Components
+'use client'
 
-import { Button } from '@/components/custom/button'
-import { UnauthorizedError } from '@/lib/exceptions'
+// Error components must be Client Components
 import { useEffect } from 'react'
+
+import { UnauthorizedError } from '@/lib/exceptions'
+import { Button } from '@/components/custom/button'
 
 export default function Error({
   error,

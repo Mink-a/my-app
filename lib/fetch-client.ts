@@ -1,4 +1,5 @@
 import { getSession, signOut } from 'next-auth/react'
+
 import { ServerError, UnauthorizedError } from './exceptions'
 
 interface fetchClientProps {

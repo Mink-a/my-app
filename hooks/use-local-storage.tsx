@@ -1,4 +1,5 @@
 'use client'
+
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 export default function useLocalStorage<T>(
