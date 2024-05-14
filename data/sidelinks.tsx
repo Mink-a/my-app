@@ -1,5 +1,7 @@
 import { LayoutDashboardIcon, UsersIcon } from 'lucide-react'
 
+import { ROUTES } from './const'
+
 export interface NavLink {
   title: string
   label?: string
@@ -15,13 +17,13 @@ export const sidelinks: SideLink[] = [
   {
     title: 'Dashboard',
     label: '',
-    href: '/dashboard',
+    href: ROUTES.dashboard,
     icon: <LayoutDashboardIcon size={18} />,
   },
   {
     title: 'Users',
     label: '',
-    href: '/dashboard/users',
+    href: ROUTES.users,
     icon: <UsersIcon size={18} />,
   },
 ]

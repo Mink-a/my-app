@@ -1,4 +1,11 @@
 import Link from 'next/link'
+import { SideLink } from '@/data/sidelinks'
+import { ChevronDownIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+
+import { cn } from '@/lib/utils'
+import useCheckActiveNav from '@/hooks/use-check-active-nav'
+
 import { Button, buttonVariants } from './custom/button'
 import {
   Collapsible,
@@ -19,10 +26,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from './ui/tooltip'
-import { cn } from '@/lib/utils'
-import useCheckActiveNav from '@/hooks/use-check-active-nav'
-import { SideLink } from '@/data/sidelinks'
-import { ChevronDownIcon } from 'lucide-react'
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
   isCollapsed: boolean
@@ -88,6 +91,7 @@ function NavLink({
   closeNav,
   subLink = false,
 }: NavLinkProps) {
+  const t = useTranslations('SideNav')
   const { checkActiveNav } = useCheckActiveNav()
   return (
     <Link
@@ -104,10 +108,10 @@ function NavLink({
       aria-current={checkActiveNav(href) ? 'page' : undefined}
     >
       <div className='mr-2'>{icon}</div>
-      {title}
+      {t(title)}
       {label && (
         <div className='ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground'>
-          {label}
+          {t(label)}
         </div>
       )}
     </Link>
@@ -169,7 +173,7 @@ function NavLinkIcon({ title, icon, label, href }: NavLinkProps) {
               variant: checkActiveNav(href) ? 'secondary' : 'ghost',
               size: 'icon',
             }),
-            'h-12 w-12'
+            'size-12'
           )}
         >
           {icon}
@@ -201,7 +205,7 @@ function NavLinkIconDropdown({ title, icon, label, sub }: NavLinkProps) {
             <Button
               variant={isChildActive ? 'secondary' : 'ghost'}
               size='icon'
-              className='h-12 w-12'
+              className='size-12'
             >
               {icon}
             </Button>

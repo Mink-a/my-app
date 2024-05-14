@@ -1,6 +1,8 @@
 'use client'
+
+import { signOut, useSession } from 'next-auth/react'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/custom/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,15 +13,15 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useSession } from 'next-auth/react'
+import { Button } from '@/components/custom/button'
 
 export function UserNav() {
   const { data } = useSession()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
-          <Avatar className='h-8 w-8'>
+        <Button variant='ghost' className='relative size-8 rounded-full'>
+          <Avatar className='size-8'>
             <AvatarImage src='https://i.pravatar.cc/10' alt='@user-profile' />
             <AvatarFallback>
               {data?.user.name?.charAt(0).toUpperCase()}
@@ -55,7 +57,7 @@ export function UserNav() {
           <DropdownMenuItem>New Team</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => signOut()}>
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>

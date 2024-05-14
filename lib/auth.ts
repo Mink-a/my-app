@@ -1,12 +1,14 @@
-import fetchClient from '@/lib/fetch-client'
-import { jwt } from '@/lib/utils'
 import { randomBytes, randomUUID } from 'crypto'
+import { ROUTES } from '@/data/const'
 import type { NextAuthOptions, User } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+import fetchClient from '@/lib/fetch-client'
+import { jwt } from '@/lib/utils'
+
 export const authOptions: NextAuthOptions = {
   pages: {
-    signIn: '/login',
+    signIn: ROUTES.login,
   },
   session: {
     strategy: 'jwt',

@@ -1,18 +1,22 @@
 {
   "Index": {
-    "title": "Home"
+    "title": "မူလ"
   },
   "Login": {
     "title": "Login",
-    "username": "Username",
-    "password": "Password",
-    "submit": "Login"
+    "username": "နာမည်",
+    "password": "စကားဝှက်",
+    "submit": "လော့အင်ဝင်ပါ"
   },
   "LocaleSwitcher": {
-    "switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
+    "switchLocale": "Switch to {locale, select, mya {Myanmar} en {English} other {Unknown}}"
+  },
+  "SideNav": {
+    "Dashboard": "ဒက်ရှ်ဘုတ်",
+    "Users": "အသုံးပြုသူများ"
   },
   "UserList": {
-    "title": "Users",
-    "description": "Users List"
+    "title": "အသုံးပြုသူများ",
+    "description": "အသုံးပြုသူများ စာရင်း"
   }
 }

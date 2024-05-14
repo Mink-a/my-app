@@ -1,7 +1,9 @@
+import React from 'react'
+import Link from 'next/link'
+import { ROUTES } from '@/data/const'
+
 import { buttonVariants } from '@/components/custom/button'
 import { Search } from '@/components/custom/search'
-import Link from 'next/link'
-import React from 'react'
 
 export function Toolbar() {
   return (
@@ -9,7 +11,7 @@ export function Toolbar() {
       <Search placeholder='Search...' />
       <Link
         className={buttonVariants({ variant: 'default' })}
-        href='/users/create'
+        href={ROUTES.usersCreate}
       >
         Create
       </Link>

@@ -18,11 +18,11 @@ import { Input } from '@/components/ui/input'
 
 const formSchema = z.object({
   username: z.string().min(2, {
-    message: 'Username must be at least 2 characters.',
+    message: 'Username is required!',
   }),
-  email: z.string().email(),
+  email: z.string().min(1, { message: 'Email is required!' }).email(),
   password: z.string().min(4, {
-    message: 'Password must be at least 4 characters.',
+    message: 'Password is required!',
   }),
 })
 

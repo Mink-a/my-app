@@ -1,9 +1,12 @@
 'use client'
+
+import useIsCollapsed from '@/hooks/use-is-collapsed'
+
+import LocaleSwitcher from './custom/lang-switcher'
 import { Layout, LayoutHeader } from './custom/layout'
 import Sidebar from './sidebar'
-import useIsCollapsed from '@/hooks/use-is-collapsed'
-import { UserNav } from './user-nav'
 import { ThemeToggle } from './theme-switch'
+import { UserNav } from './user-nav'
 
 export default function AppShell({
   children,
@@ -24,6 +27,7 @@ export default function AppShell({
           <LayoutHeader className='sticky top-0 justify-between px-4 py-3 md:shadow '>
             <div className='ml-auto flex items-center space-x-4'>
               {/* <Search placeholder='Search' /> */}
+              <LocaleSwitcher />
               <ThemeToggle />
               <UserNav />
             </div>

@@ -1,6 +1,12 @@
-# Ignore artifacts:
+cache
+.cache
+package.json
+package-lock.json
+public
+CHANGELOG.md
+.yarn
+dist
+node_modules
+.next
 build
-coverage
-
-# Ignore all HTML files:
-*.html
+.contentlayer

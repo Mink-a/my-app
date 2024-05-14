@@ -9,7 +9,11 @@
     "submit": "Login"
   },
   "LocaleSwitcher": {
-    "switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
+    "switchLocale": "Switch to {locale, select, mya {Myanmar} en {English} other {Unknown}}"
+  },
+  "SideNav": {
+    "Dashboard": "Dashboard",
+    "Users": "Users"
   },
   "UserList": {
     "title": "Users",

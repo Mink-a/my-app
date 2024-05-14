@@ -1,8 +1,3 @@
 {
-  "./{app,components,data,hooks,lib}/**/*.{js,jsx,ts,tsx}": [
-    "npx prettier --log-level warn --write",
-    "eslint --fix",
-    "eslint",
-    "git add"
-  ]
+  "**/*.{ts,tsx,mdx}": ["prettier --write", "eslint --fix"]
 }
